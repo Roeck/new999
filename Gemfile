@@ -1,5 +1,4 @@
 source "http://rubygems.org"
-ruby "3.0.0"
 
 gem "sinatra"
 gem "activerecord", "~> 5.2", :require => "active_record"
@@ -11,11 +10,14 @@ gem "shotgun"
 gem "pry"
 gem "bcrypt"
 gem "sinatra-flash"
-gem "pg", :group => :production
-gem "sqlite3", :group => :development
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 group :test do
   gem "rspec"
   gem "capybara"
   gem "rack-test"
-end 
+end
